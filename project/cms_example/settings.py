@@ -62,10 +62,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.csrf.middleware.CsrfMiddleware',
+    'cms.middleware.multilingual.MultilingualURLMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.multilingual.MultilingualURLMiddleware',
     'simple_translation.middleware.MultilingualGenericsMiddleware',
     'cbv.middleware.DeferredRenderingMiddleware'
 )
