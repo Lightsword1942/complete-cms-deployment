@@ -8,6 +8,7 @@
 	{% endfor %}{% endblock meta_tags %}{% if site_settings.favicon %}<link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}cms_example/{{ site_settings.favicon }}" />
 	<link rel="image_src" type="image/jpeg" href="{{ STATIC_URL }}cms_example/favicon.jpg" />
 	<link rel="apple-touch-icon" href="{{ STATIC_URL }}cms_example/favicon.png" />{% endif %}{% block css %}
+	{% cms_toolbar %}
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms_example/css/base.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms_example/css/modules.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms_example/css/print.css" media="print" />{% endblock css %}{% render_block "css" %}{% block css_conditionals %}
