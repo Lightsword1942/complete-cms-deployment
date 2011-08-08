@@ -66,7 +66,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'simple_translation.middleware.MultilingualGenericsMiddleware',
+    'cmsplugin_blog.middleware.MultilingualBlogEntriesMiddleware',
     'cbv.middleware.DeferredRenderingMiddleware'
 )
 
