@@ -37,3 +37,7 @@ Then login and run this::
     fab -R vagrant config setup_all
     # if fails vagrant destroy and add a " -w" here
     # you will get 4 prompts 2 for java 2 for postfix, use tab and space to navigate
+
+If completed successfully point your browser to http://localcost:forwarded_vagrant_port_80/
+
+Postfix might require a restart to get going.
