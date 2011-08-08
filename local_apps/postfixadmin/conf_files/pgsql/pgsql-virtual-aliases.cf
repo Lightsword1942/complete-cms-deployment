@@ -1,0 +1,6 @@
+hosts = __hostname__ 
+user = __username__ 
+password = __password__ 
+dbname = postfixadmin 
+query = select postfixadmin_mailbox.username||'@'||mailbox_domain.domain from postfixadmin_domain as alias_domain, postfixadmin_domain as mailbox_domain, postfixadmin_mailbox, postfixadmin_alias where mailbox_domain.id = postfixadmin_mailbox.domain_id and alias_domain.id = postfixadmin_alias.domain_id and ( postfixadmin_alias.username = '%u' or postfixadmin_mailbox.username = '%u' or postfixadmin_alias.username = ' ' ) and alias_domain.domain = '%d' and postfixadmin_mailbox.id = postfixadmin_alias.mailbox_id and postfixadmin_mailbox.active = 't' and mailbox_domain.active = 't' and alias_domain.active = 't' and postfixadmin_alias.active = 't' order by postfixadmin_alias.username desc limit 1
+

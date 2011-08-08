@@ -1,0 +1,5 @@
+hosts = __hostname__
+user = __username__
+password = __password__
+dbname = postfixadmin
+query = select postfixadmin_domain.description from postfixadmin_domain where postfixadmin_domain.domain = '%s'

@@ -1,0 +1,5 @@
+hosts=localhost
+user=%(db_user)s
+password=%(db_password)s
+dbname=%(db_name)s
+query = select mailbox.username||'@'||domain.domain from postfixadmin_domain as domain, postfixadmin_mailbox as mailbox, postfixadmin_alias as alias where domain.domain = '%%d' and ( (domain.id = alias.domain_id and mailbox.id = alias.mailbox_id and alias.username = '%%u' or alias.username = ' ' and alias.active = 't') or (domain.id = mailbox.domain_id and mailbox.username = '%%u')	) and mailbox.active = 't' and domain.active = 't' order by mailbox.username, alias.username desc limit 1

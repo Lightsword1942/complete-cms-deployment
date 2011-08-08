@@ -1,0 +1,5 @@
+hosts=localhost
+user=%(db_user)s
+password=%(db_password)s
+dbname=%(db_name)s
+query = select postfixadmin_domain.domain||'/'||postfixadmin_mailbox.username||'/' from postfixadmin_domain, postfixadmin_mailbox where postfixadmin_domain.id = postfixadmin_mailbox.domain_id and postfixadmin_mailbox.username = '%%u' and postfixadmin_domain.domain = '%%d'

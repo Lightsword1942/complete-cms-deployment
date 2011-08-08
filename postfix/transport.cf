@@ -1,0 +1,6 @@
+hosts=localhost
+user=%(db_user)s
+password=%(db_password)s
+dbname=%(db_name)s
+query = select 'virtual:' from postfixadmin_domain where postfixadmin_domain.domain = '%%d'
+ 

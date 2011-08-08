@@ -1,0 +1,7 @@
+<solr persistent="true" sharedLib="lib">
+  <cores adminPath="/admin/cores">
+    {% for core in cores %}
+    <core name="{{ core }}" instanceDir="{{ core }}" />
+    {% endfor %}
+  </cores>
+</solr>
