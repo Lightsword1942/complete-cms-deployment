@@ -33,8 +33,6 @@ Then login and run this::
 
     sudo easy_install -U pip ; sudo pip install fabric ; sudo pip install jinja2
 
-    wget https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.ppk
-
     git clone http://github.com/fivethreeo/complete-cms-deployment.git
 
     cd complete-cms-deployment
