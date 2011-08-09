@@ -24,3 +24,17 @@ comment_form_helper.form_action = reverse('comments-post-comment')
 comment_form_helper.form_method = 'POST'
 comment_form_helper.add_input(Submit('post','Post'))
 comment_form_helper.add_input(Submit('preview','Preview'))
+
+search_form_helper = FormHelper()
+
+search_form_layout = Layout(
+    Fieldset('',
+        'q',
+        'models'
+)
+
+search_form_helper.add_layout(search_form_layout)
+
+search_form_helper.form_method = 'GET'
+search_form_helper.add_input(Submit('post','Search'))
+
