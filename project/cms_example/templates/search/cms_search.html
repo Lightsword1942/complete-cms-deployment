@@ -16,7 +16,7 @@
                 {% for language in facets.fields.language %}
                     <li><a href="{{ request.get_full_path }}&amp;selected_facets=language_exact:{{ language.0 }}">{{ language.0 }}</a> ({{ language.1 }})</li>
                 {% endfor %}
-                <ul>
+                </ul>
             {% else %}
             {% endif %}
     {% endblock refine_search %}
