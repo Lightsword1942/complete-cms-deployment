@@ -8,6 +8,8 @@ djangocms-utils
 -e git+http://github.com/fivethreeo/cmsplugin-blog.git#egg=cmsplugin_blog
 -e git+http://github.com/fivethreeo/django-cms-facetsearch.git#egg=django-cms-facetsearch
 -e git+http://github.com/fivethreeo/cmsplugin-blog-search.git#egg=cmsplugin-blog-search
+-e git+http://github.com/HonzaKral/django-threadedcomments.git#egg=django-threadedcomments
+django-uni-form
 django-sekizai
 django-cbv
 django-pagination

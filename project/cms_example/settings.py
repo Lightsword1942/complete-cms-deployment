@@ -83,7 +83,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
-
+    'django.contrib.comments',
+    'threadedcomments',
+    
     'staticfiles',
     'mptt',
     'tinymce',
@@ -161,8 +163,6 @@ DJANGOCMS_UTILS_SEARCH_FACET=True
 
 FORCE_LOWERCASE_TAGS = True
 
-CMSPLUGIN_BLOG_PLACEHOLDERS = ('excerpt','content')
-
 from easy_thumbnails import defaults
 
 THUMBNAIL_PROCESSORS = defaults.PROCESSORS + (
@@ -172,6 +172,8 @@ THUMBNAIL_DEBUG = DEBUG
 
 HAYSTACK_SEARCH_ENGINE= 'solr'
 HAYSTACK_SITECONF = 'cms_example.search_sites'
+
+COMMENTS_APP = 'threadedcomments'
 
 try:
     from local_settings import *
