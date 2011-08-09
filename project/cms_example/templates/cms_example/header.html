@@ -1,8 +1,7 @@
+{% load menu_tags cms_tags %}
 <a href="/" id="logolink"></a>
 <ul id="language-changer">
-{% if request.current_page %}
-    {% language_chooser "native" %}
-{% endif %}
+{% language_chooser "native" %}
 </ul>
 {% endblock header %}
 </div>
