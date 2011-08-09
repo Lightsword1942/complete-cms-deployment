@@ -1,10 +1,11 @@
 {% extends "comments/base.html" %}
 
+{% load i18n uni_form_tags cms_example_tags sekizai_tags comments %}
+
 {% block title %}{% trans "Preview your comment" %}{% endblock %}
 
 {% block content %}
 
-  {% load i18n uni_form_tags cms_example_tags sekizai_tags comments %}
 
   <form action="{% comment_form_target %}" method="post">{% csrf_token %}
     {% if next %}<div><input type="hidden" name="next" value="{{ next }}" /></div>{% endif %}
