@@ -170,6 +170,8 @@ def restart_tomcat():
     sudo("invoke-rc.d tomcat6 restart")
 
 def setup_postfix():
+    
+    sudo("hostname %(postfix_hostname)s" % env)
     sudo("aptitude update")
     sudo("aptitude -y install postfix postfix-tls postfix-pgsql "
                             "dovecot-imapd dovecot-pop3d dovecot-common "
@@ -191,7 +193,6 @@ def setup_postfix():
     
 def configure_postfix():
     
-    sudo("hostname %(postfix_hostname)s" % env)
     files.upload_template("postfix/main.cf", "/etc/postfix/main.cf", use_sudo=True, context=env)    
     sudo("postconf -e \"content_filter = smtp-amavis:[127.0.0.1]:10024\"")
     files.upload_template("postfix/master.cf", "/etc/postfix/master.cf" % env, use_sudo=True, context=env)    
