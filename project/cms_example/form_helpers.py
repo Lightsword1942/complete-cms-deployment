@@ -23,4 +23,5 @@ commentform_helper.add_layout(commentform_layout)
 """
 comment_form_helper.form_action = reverse('comments-post-comment')
 comment_form_helper.form_method = 'POST'
-comment_form_helper.add_input(Submit('post','Post'))
+comment_form_helper.add_input(Submit('preview','Post'))
+comment_form_helper.add_input(Submit('preview','Preview'))

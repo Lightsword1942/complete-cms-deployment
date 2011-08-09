@@ -1,11 +1,10 @@
-{% extends "cmsplugin_blog/cmsplugin_blog_base.html" %}
+{% extends "comments/base.html" %}
 
 {% block title %}{% trans "Preview your comment" %}{% endblock %}
 
-{% block left-col %}
+{% block content %}
 
   {% load i18n uni_form_tags cms_example_tags sekizai_tags comments %}
-  {% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fivethreeo/dlform.css">{% endaddtoblock %}
 
   <form action="{% comment_form_target %}" method="post">{% csrf_token %}
     {% if next %}<div><input type="hidden" name="next" value="{{ next }}" /></div>{% endif %}

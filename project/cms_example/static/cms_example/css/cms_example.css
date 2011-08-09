@@ -112,3 +112,5 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 #div_id_honeypot { display: none; }
+.comment-form-threaded { display: none; }
+}
