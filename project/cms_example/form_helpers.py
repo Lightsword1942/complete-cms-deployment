@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse
 from uni_form.helpers import FormHelper, Submit, Reset
 from uni_form.helpers import Layout, Fieldset, Row, HTML
 
-commentform_helper = FormHelper()
+comment_form_helper = FormHelper()
 """
 # create the layout object
 commentform_layout = Layout(
@@ -21,6 +21,6 @@ commentform_layout = Layout(
 
 commentform_helper.add_layout(commentform_layout)
 """
-commentform_helper.form_action = reverse('comments-post-comment')
-commentform_helper.form_method = 'POST'
-commentform_helper.add_input(Submit('post','Post'))
+comment_form_helper.form_action = reverse('comments-post-comment')
+comment_form_helper.form_method = 'POST'
+comment_form_helper.add_input(Submit('post','Post'))
