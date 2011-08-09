@@ -11,6 +11,7 @@ comment_form_layout = Layout(
         'security_hash',
         'title',
         'name',
+        'email',
         'url',
         'comment',
         'honeypot'
