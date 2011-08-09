@@ -31,6 +31,7 @@ search_form_layout = Layout(
     Fieldset('',
         'q',
         'models'
+    )
 )
 
 search_form_helper.add_layout(search_form_layout)
