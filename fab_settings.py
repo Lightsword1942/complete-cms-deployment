@@ -31,11 +31,11 @@ group_settings = {
 
     'vagrantdevelop': {
         'key_filename': '/home/vagrant/vagrant.ppk',
-        'servername': 'develop.cms_example.com',
+        'servername': 'develop.cms-example.com',
         'gunicorn_port': '8001',
         'gunicorn_autostart': 'true',
         'db_name': 'develop_cms_example',
-        'postfix_hostname': 'cms_example.com',
+        'postfix_hostname': 'cms-example.com',
         'memcached_port': '11214',
         'solr_cores': 'develop',
         'solr_core': 'develop'
