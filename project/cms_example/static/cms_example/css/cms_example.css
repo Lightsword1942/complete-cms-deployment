@@ -110,3 +110,5 @@ ul.sf-menu li li li.sfHover ul {
 	left:			10em; /* match ul width */
 	top:			0;
 }
+
+#div_id_honeypot { display: none; }
