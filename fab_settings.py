@@ -1,4 +1,3 @@
-
 extra_paths = ':'.join([
     '/home/%(user)s/%(project_name)s/local_apps',
     '/home/%(user)s/%(project_name)s/project',
@@ -30,7 +29,6 @@ global_settings = {
 group_settings = {
 
     'vagrantdevelop': {
-        'key_filename': '/home/vagrant/vagrant.ppk',
         'servername': 'develop.cms-example.com',
         'gunicorn_port': '8001',
         'gunicorn_autostart': 'true',
