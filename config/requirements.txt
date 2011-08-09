@@ -24,7 +24,5 @@ cmsplugin-filer==0.8.0
 easy-thumbnails==1.0-alpha-13
 gunicorn
 psycopg2
-xlwt
-gdata
 pysolr
 BeautifulSoup
