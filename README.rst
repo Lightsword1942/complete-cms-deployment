@@ -5,7 +5,9 @@ Keywords:
 * Nginx
 * Gunicorn
 * Django CMS
-* cmsplugin_blog
+* cmsplugin-blog
+* django-threadedcomments
+* djano-uni-form
 * Supervisord
 * Postgresql
 * Rabbitmq
