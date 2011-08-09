@@ -170,17 +170,8 @@ def restart_tomcat():
     sudo("invoke-rc.d tomcat6 restart")
 
 def setup_postfix():
-    files.upload_template("postfix/main.cf", "/etc/postfix/main.cf", use_sudo=True, context=env)    
-    sudo("postconf -e \"content_filter = smtp-amavis:[127.0.0.1]:10024\"")
-    files.upload_template("postfix/master.cf", "/etc/postfix/master.cf" % env, use_sudo=True, context=env)    
-    files.upload_template("postfix/mailboxes.cf", "/etc/postfix/mailboxes.cf" % env, use_sudo=True, context=env)   
-    files.upload_template("postfix/transport.cf", "/etc/postfix/transport.cf" % env, use_sudo=True, context=env)   
-    files.upload_template("postfix/aliases.cf", "/etc/postfix/aliases.cf" % env, use_sudo=True, context=env)    
-    files.upload_template("postfix/dovecot.conf", "/etc/dovecot/dovecot.conf" % env, use_sudo=True, context=env)   
-    files.upload_template("postfix/dovecot-sql.conf", "/etc/dovecot/dovecot-sql.conf" % env, use_sudo=True, context=env)   
-    put("postfix/spamassassin", "/etc/default/spamassassin", use_sudo=True)
-    put("postfix/amavis.15-content_filter_mode", "/etc/amavis/conf.d/15-content_filter_mode", use_sudo=True)
-    
+
+    sudo("sysctl kernel.hostname=%(postfix_hostname)s" % env)
     sudo("chown root:root /etc/amavis/conf.d/15-content_filter_mode")
     sudo("invoke-rc.d dovecot stop")
     sudo("invoke-rc.d dovecot start")
@@ -209,8 +200,17 @@ def setup_postfix():
     configure_postfix()
     
 def configure_postfix():
+    files.upload_template("postfix/main.cf", "/etc/postfix/main.cf", use_sudo=True, context=env)    
+    sudo("postconf -e \"content_filter = smtp-amavis:[127.0.0.1]:10024\"")
+    files.upload_template("postfix/master.cf", "/etc/postfix/master.cf" % env, use_sudo=True, context=env)    
+    files.upload_template("postfix/mailboxes.cf", "/etc/postfix/mailboxes.cf" % env, use_sudo=True, context=env)   
+    files.upload_template("postfix/transport.cf", "/etc/postfix/transport.cf" % env, use_sudo=True, context=env)   
+    files.upload_template("postfix/aliases.cf", "/etc/postfix/aliases.cf" % env, use_sudo=True, context=env)    
+    files.upload_template("postfix/dovecot.conf", "/etc/dovecot/dovecot.conf" % env, use_sudo=True, context=env)   
+    files.upload_template("postfix/dovecot-sql.conf", "/etc/dovecot/dovecot-sql.conf" % env, use_sudo=True, context=env)   
+    put("postfix/spamassassin", "/etc/default/spamassassin", use_sudo=True)
+    put("postfix/amavis.15-content_filter_mode", "/etc/amavis/conf.d/15-content_filter_mode", use_sudo=True)
     
-    pass
 
 def setup_dbserver():
     """ Setup database server with postgis_template db """
