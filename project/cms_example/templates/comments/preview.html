@@ -4,7 +4,7 @@
 
 {% block title %}{% trans "Preview your comment" %}{% endblock %}
 
-{% block content %}
+{% block left-col %}
 
 
   <form action="{% comment_form_target %}" method="post">{% csrf_token %}
