@@ -1,0 +1,94 @@
+{% extends "cmsplugin_blog/cmsplugin_blog_base.html" %}
+
+{% load i18n uni_form_tags cms_example_tags placeholder_tags cmsplugin_blog_tags simple_translation_tags comments threadedcomments_tags sekizai_tags adminmedia  %}
+
+{% block left-col %}
+{% with object|get_preferred_translation_from_request:request as title %}
+<h1>{{ title }}</h1>
+
+<p class="date"><span>{{ object.pub_date|date:"d F Y" }}</span> {{ object|render_language_choices:request|safe }}</p>
+
+{% with object.placeholders|choose_placeholder:"content" as content %}
+    {% render_placeholder one %}
+{% endwith %}
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+//<![CDATA[
+function display_comment_form(id_of_form) {
+    jQuery('#'+id_of_form).slideDown()
+}
+//]]>
+</script>
+{% endaddtoblock %}
+
+<h2>{% trans "Comments" %}</h2>
+
+{% load_uni_form_helper "cms_example.form_helpers.comment_form_helper" as comment_form_helper %}
+
+{% get_comment_list for title as comments_list %}
+
+{% for comment in comments_list|fill_tree|annotate_tree %}
+
+{% if not comment.open  %}
+    </div>
+{% endif %}
+    
+<div {% if forloop.last %}id="clast"{% else %}id="c{{ comment.pk }}"{% endif %} class="comment {% if comment.depth != 1 %}indent {% endif %}{% cycle 'row1' 'row2' %}">
+
+<p class="comment-title">{{ comment.title }}</p>
+{{ comment.comment|linebreaks }} <p><a href="#" onclick="display_comment_form('comment-form-{{ comment.pk }}'); return false">{% trans "Reply" %}</a></p>
+
+<div class="comment-form-threaded" id="comment-form-{{ comment.pk }}">
+{% get_comment_form for title as comment_form with comment.pk %}
+{% uni_form comment_form comment_form_helper %}
+</div>
+
+{% for close in comment.close %}
+    </div>
+{% endfor %}
+
+{% endfor %}
+
+<h2>{% trans "Comment on this blogpost" %}</h2>
+
+{% get_comment_form for title as comment_form %}
+<form method="POST" action="{% comment_form_target %}" class="commentform">
+<fieldset>
+<legend>{% trans "Post a comment" %}</legend>      
+{% csrf_token %}
+<dl>
+    {% for field in comment_form.visible_fields %}
+    {% if field.name != "honeypot" %}
+    <dt class="{% if field.errors %}errors {% endif %}">{% if field.field.required %}<em>*</em>{% endif %} {{ field.label_tag }}</dt>
+    <dd class="{% if field.errors %}errors {% endif %}">
+            {% if forloop.first %}
+                {% for hidden in comment_form.hidden_fields %}
+                {{ hidden }}
+                {% endfor %}
+                <input type="hidden" name="next" value="{{ title.get_absolute_url }}#clast" />
+            {% endif %}
+            {{ field }}{{ field.errors }}
+    </dd>
+    {% endif %}
+    {% endfor %}
+    <dt></dt>
+    <dd>{% trans "All fields with <em>*</em> are required." %}</dd>
+    <dt class="submit"></dt>
+    <dd class="submit {% if comment_form.non_field_errors %}errors{% endif %}">{{ comment_form.honepot }} {{ comment_form.non_field_errors }}
+        <input type="submit" name="post" class="submit-post" value="{% trans "Post" %}" />
+	    <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" /></dd>
+</dl>
+</fieldset>
+</form>
+{% endwith %}
+
+{% endblock %}
+
+{% block right-col %}
+
+{% render_month_links %}
+
+{% render_tag_links %}
+
+{% endblock %}
