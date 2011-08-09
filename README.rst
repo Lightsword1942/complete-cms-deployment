@@ -4,14 +4,17 @@ Keywords:
 
 * Nginx
 * Gunicorn
+* Django CMS
+* cmsplugin_blog
 * Supervisord
 * Postgresql
 * Rabbitmq
 * Celery
 * Memcached
 * Solr
-* Postfix - managed from the django admin!
-* Dovecot - ditto
+* Postfix, Dovecot - managed from the django admin!
+
+Fully working example with templates using blueprint css
 
 Usage:
 
