@@ -9,7 +9,7 @@
     {% include "cms_example/header.html" %}
 </div>
 <!-- end: header -->
-{% block content %}
+{% block main_content %}
 <!-- start: content -->
 <h1 class="hidden" id="content">{% trans "Content:" %} {% page_attribute title %}</h1>
 <div id="main" class="container clearfix">
@@ -24,7 +24,7 @@
   </div>
 </div>
 <!-- end: content -->
-{% endblock content %}
+{% endblock main_content %}
 <!-- start: footer -->
 <div class="container clearfix">
   <div id="footer" class="span-24">
