@@ -101,6 +101,7 @@ def setup_all():
     """ Setup all parts on one single server adds a fully running setup """
     setup_webserver()
     setup_webapp()
+    setup_supervisord()
     update_dependencies()
     push()
     setup_dbserver()
@@ -115,7 +116,6 @@ def setup_all():
     setup_postfix()
     setup_celery()
     setup_memcached()
-    setup_supervisord()
     configure_supervisor_gunicorn()
     
 def setup_instance():
