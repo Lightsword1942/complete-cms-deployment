@@ -149,6 +149,7 @@ def solr_multicore():
         sudo("rm -rf /etc/solr/conf")
         sudo("rm -rf /var/lib/solr/data")
         sudo("chown -R tomcat6:tomcat6 /etc/solr")
+        sudo("chown -R tomcat6:tomcat6 /var/lib/solr")
     cores = env.solr_cores.split(',')
     for core in cores:
         if not files.exists("/etc/solr/conf-%s" % core):
@@ -156,6 +157,7 @@ def solr_multicore():
             sudo("mkdir /usr/share/solr/%s" % core)
             sudo("ln -s /etc/solr/conf-%s /usr/share/solr/%s/conf" % (core,core))
             files.sed("/etc/solr/conf-%s/solrconfig.xml" % core, "/var/lib/solr/data", "/var/lib/solr/%s/data" % core, use_sudo=True)
+    
     files.upload_template("solr/solr.xml", "/usr/share/solr/solr.xml", context={'cores': cores}, use_jinja=True, use_sudo=True)
     restart_tomcat() # restart but conf will be borked until you update_solr_schema() for each core
 
