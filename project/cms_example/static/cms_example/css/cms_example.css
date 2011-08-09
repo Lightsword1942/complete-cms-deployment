@@ -112,5 +112,9 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 #div_id_honeypot { display: none; }
+
 .comment-form-threaded { display: none; }
-}
+.comment { border-left: solid 1px #000055; padding-left: 0.2em;  }
+.row1 { background: #ffffff; }
+.row2 { background: #eeeeee; }
+.indent { margin-left: 1em; }
