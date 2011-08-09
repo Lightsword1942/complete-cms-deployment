@@ -15,7 +15,7 @@ comment_form_layout = Layout(
     )
 )
 
-commentform_helper.add_layout(comment_form_layout)
+comment_form_helper.add_layout(comment_form_layout)
 
 comment_form_helper.form_action = reverse('comments-post-comment')
 comment_form_helper.form_method = 'POST'
