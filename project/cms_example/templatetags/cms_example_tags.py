@@ -16,6 +16,7 @@ class LoadUniFormHelper(AsTag):
     )
 
     def get_value(self, context, importpath):
-        return import_module(importpath)
+        parts = importpath.split('.')
+        return getattr(import_module('.'.join(parts[:-1])), parts[-1])
 
 register.tag(LoadUniFormHelper)
