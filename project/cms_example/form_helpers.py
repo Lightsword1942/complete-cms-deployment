@@ -35,7 +35,7 @@ search_form_layout = Layout(
 )
 
 search_form_helper.add_layout(search_form_layout)
-search_form_helper.style = 'inline'
+search_form_helper.form_style = 'inline'
 search_form_helper.form_method = 'GET'
 search_form_helper.add_input(Submit('post','Search'))
 
