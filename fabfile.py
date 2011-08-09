@@ -190,8 +190,9 @@ def setup_postfix():
     configure_postfix()
     
 def configure_postfix():
-
-    files.upload_template("postfix/main.cf", "/etc/postfix/main.cf" % env, use_sudo=True, context=env)    
+    
+    files.upload_template("postfix/hostname", "/etc/hostname", use_sudo=True, context=env)    
+    files.upload_template("postfix/main.cf", "/etc/postfix/main.cf", use_sudo=True, context=env)    
     sudo("postconf -e \"content_filter = smtp-amavis:[127.0.0.1]:10024\"")
     files.upload_template("postfix/master.cf", "/etc/postfix/master.cf" % env, use_sudo=True, context=env)    
     files.upload_template("postfix/mailboxes.cf", "/etc/postfix/mailboxes.cf" % env, use_sudo=True, context=env)   
