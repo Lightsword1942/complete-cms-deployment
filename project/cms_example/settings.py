@@ -85,7 +85,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.comments',
     'threadedcomments',
-    'django_uni_form',
+    'uni_form',
     
     'staticfiles',
     'mptt',
