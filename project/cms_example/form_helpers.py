@@ -5,14 +5,15 @@ from uni_form.helpers import Layout, Fieldset, Row, HTML
 comment_form_helper = FormHelper()
 
 comment_form_layout = Layout(
-    Fieldset('', (
+    Fieldset('',
         'parent',
-        'name'
-        'email',
-        'url'
+        'content_type',
+        'security_hash',
         'title',
-        'comment'
-        )
+        'name',
+        'url',
+        'comment',
+        'honeypot'
     )
 )
 
