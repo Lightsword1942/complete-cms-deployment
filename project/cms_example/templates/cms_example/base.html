@@ -9,14 +9,13 @@
     <link rel="image_src" type="image/jpeg" href="{{ STATIC_URL }}cms_example/favicon.jpg" />
     <link rel="apple-touch-icon" href="{{ STATIC_URL }}cms_example/favicon.png" />{% endif %}{% block css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}cms_example/css/blueprint/screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="{{ STATIC_URL }}cms_example/css/blueprint/print.css" type="text/css" media="print"> 
-    {% endblock css %}
-    {% render_block "css" %}
-    {% block css_conditionals %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}cms_example/css/blueprint/print.css" type="text/css" media="print">
+    <link rel="stylesheet" href="{{ STATIC_URL }}cms_example/css/cms_example.css" type="text/css" media="screen, projection">
     <!--[if lt IE 8]>
     <link rel="stylesheet" href="{{ STATIC_URL }}cms_example/css/blueprint/ie.css" type="text/css" media="screen, projection">
     <![endif]-->
-    {% endblock css_conditionals %}
+    {% endblock css %}
+    {% render_block "css" %}  
     {% block extrahead %}{% endblock extrahead %}
 </head>
 <body class="{% block tpl_id %}tpl_master{% endblock %} {{ LANGUAGE_CODE }}">{% spaceless %}
