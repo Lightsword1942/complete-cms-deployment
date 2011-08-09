@@ -6,13 +6,13 @@
 {% block extend_base %}
 <!-- start: header -->
 <div id="header" class="container last">
-  
+    {% include "cms_example/header.html" %}
 </div>
 <!-- end: header -->
 {% block content %}
 <!-- start: content -->
 <h1 class="hidden" id="content">{% trans "Content:" %} {% page_attribute title %}</h1>
-<div id="main" class="container last">
+<div id="main" class="container clearfix">
   <div class="span-24 last">
   {% block feature %}{% with "950" as width %}{% placeholder feature %}{% endwith %}{% endblock feature %}
   {% block col_content %}
@@ -26,8 +26,9 @@
 <!-- end: content -->
 {% endblock content %}
 <!-- start: footer -->
-<div class="container last clearfix">
+<div class="container clearfix">
   <div id="footer" class="span-24">
+    {% include "cms_example/footer.html" %}
   </div>
 </div>
 <!-- end: footer -->
