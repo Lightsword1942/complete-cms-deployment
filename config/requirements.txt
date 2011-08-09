@@ -2,7 +2,7 @@ Django==1.2.5
 django-staticfiles
 PIL
 South
--e git+http://github.com/divio/django-cms.git@2.2b1#egg=django-cms
+-e git+http://github.com/fivethreeo/django-cms.git@develop#egg=django-cms
 simple-translation
 djangocms-utils
 -e git+http://github.com/fivethreeo/cmsplugin-blog.git#egg=cmsplugin_blog
