@@ -7,8 +7,8 @@ from classytags.helpers import AsTag
 
 register = template.Library()
 
-class LoadUniFormLayout(AsTag):
-    name = 'load_uni_form_layout'
+class LoadUniFormHelper(AsTag):
+    name = 'load_uni_form_helper'
     options = Options(
         Argument('importpath', resolve=True, required=True),
         'as',
@@ -18,4 +18,4 @@ class LoadUniFormLayout(AsTag):
     def get_value(self, context, importpath):
         return import_module(importpath)
 
-register.tag(LoadUniFormLayout)
+register.tag(LoadUniFormHelper)
