@@ -8,6 +8,8 @@ Keywords:
 * cmsplugin-blog
 * django-threadedcomments
 * djano-uni-form
+* django-cms-facetsearch
+* cmsplugin-blog-search
 * Supervisord
 * Postgresql
 * Rabbitmq
