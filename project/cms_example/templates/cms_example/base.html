@@ -22,9 +22,9 @@
     {% block extrahead %}{% endblock extrahead %}
 </head>
 <body class="{% block tpl_id %}tpl_master{% endblock %} {{ LANGUAGE_CODE }}">{% spaceless %}
-{% if current_page %}
+
 {% cms_toolbar %}
-{% endif %}
+
 {% endspaceless %}
 {% block extend_base %}{% endblock extend_base %}
 {% block js %}
