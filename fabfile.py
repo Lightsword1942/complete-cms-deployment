@@ -171,8 +171,9 @@ def restart_tomcat():
 
 def setup_postfix():
 
+    hostname = '127.0.0.1    %s    %s' % (env.postfix_hostname, env.postfix_hostname.split('.')[0])
+    files.append('/etc/hosts', hostname, use_sudo=True)
     sudo("hostname %(postfix_hostname)s" % env)
-    sudo("sysctl kernel.hostname=%(postfix_hostname)s" % env)
 
     sudo("aptitude update")
     sudo("aptitude -y install postfix postfix-tls postfix-pgsql "
