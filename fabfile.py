@@ -171,14 +171,9 @@ def restart_tomcat():
 
 def setup_postfix():
 
+    sudo("hostname %(postfix_hostname)s" % env)
     sudo("sysctl kernel.hostname=%(postfix_hostname)s" % env)
 
-    sudo("invoke-rc.d dovecot stop")
-    sudo("invoke-rc.d dovecot start")
-    sudo("invoke-rc.d postfix restart")
-    sudo("invoke-rc.d spamassassin restart")
-    sudo("invoke-rc.d clamav-daemon restart")
-    sudo("invoke-rc.d amavis restart")
     sudo("aptitude update")
     sudo("aptitude -y install postfix postfix-tls postfix-pgsql "
                             "dovecot-imapd dovecot-pop3d dovecot-common "
@@ -210,6 +205,13 @@ def configure_postfix():
     put("postfix/spamassassin", "/etc/default/spamassassin", use_sudo=True)
     put("postfix/amavis.15-content_filter_mode", "/etc/amavis/conf.d/15-content_filter_mode", use_sudo=True)
     sudo("chown root:root /etc/amavis/conf.d/15-content_filter_mode")
+
+    sudo("invoke-rc.d dovecot stop")
+    sudo("invoke-rc.d dovecot start")
+    sudo("invoke-rc.d postfix restart")
+    sudo("invoke-rc.d spamassassin restart")
+    sudo("invoke-rc.d clamav-daemon restart")
+    sudo("invoke-rc.d amavis restart")
 
 def setup_dbserver():
     """ Setup database server with postgis_template db """
