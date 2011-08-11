@@ -86,6 +86,12 @@ def update_dependencies():
     """ Update requirements remotely """
     put("config/requirements.txt", "%(root)s/requirements.txt" % env)
     run("%(root)s/bin/pip install -r %(root)s/requirements.txt" % env)
+
+def upgrade_dependency(dep):
+    run("%s %s" % ("%(root)s/bin/pip install -U" % env, dep) )
+
+def uninstall_dependency(dep):
+    run("%s %s" % ("%(root)s/bin/pip uninstall" % env, dep) )
         
 def reload(full_setup=False, first_run=False):
     """ Reload webserver/webapp """
