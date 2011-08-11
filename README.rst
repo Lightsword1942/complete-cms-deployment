@@ -1,22 +1,25 @@
 A complete server setup with django cms
 
-Keywords:
-
-* Nginx
+* Nginx - no round robin
 * Gunicorn
-* Django CMS
-* cmsplugin-blog
-* django-threadedcomments
+* Django CMS 2.1b
+* cmsplugin-blog - from git
+* django-threadedcomments - from git
 * djano-uni-form
-* django-cms-facetsearch
-* cmsplugin-blog-search
-* Supervisord
-* Postgresql
-* Rabbitmq
+* django-cms-facetsearch - from git - release soon
+* cmsplugin-blog-search - from git - release soon
+* django-celery
+* django-haystack
+* celery-haystack
+* Supervisord - controlling gunicorn and celeryd       
+* Postgresql - no failover yet
+* Rabbitmq 
 * Celery
-* Memcached
-* Solr
+* Memcached - multiple startup script
+* Solr - multicore
 * Postfix, Dovecot - managed from the django admin!
+
+TODO: multi server setup
 
 Fully working example with templates using blueprint css
 
