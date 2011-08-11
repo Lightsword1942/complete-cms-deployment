@@ -114,7 +114,7 @@ def setup_all():
     solr_multicore()
     update_solr_schema()
     setup_postfix()
-    setup_celery()
+    setup_rabbitmq()
     setup_memcached()
     configure_supervisor_gunicorn()
     
@@ -128,7 +128,7 @@ def setup_instance():
     add_site()
     add_superuser()
     update_solr_schema()
-    configure_celery()
+    configure_rabbitmq()
     configure_memcached()
     configure_supervisor_gunicorn()
 
@@ -269,7 +269,7 @@ def setup_webapp():
     run("mkdir -p /home/%(user)s/static/media" % env)
     files.upload_template("nginx/nginx_webapp.conf", "%(nginx_confdir)ssites-enabled/%(servername)s.conf" % env, use_sudo=True, context=env)
 
-def setup_celery():
+def setup_rabbitmq():
     sudo("aptitude update")
     sudo("aptitude -y install python-software-properties")
     sudo("sudo add-apt-repository \"deb http://www.rabbitmq.com/debian/ testing main\"")
@@ -279,11 +279,14 @@ def setup_celery():
     sudo("aptitude -y install rabbitmq-server")
     configure_celery()
     
-def configure_celery():
+def configure_rabbitmq():
     sudo("rabbitmqctl add_user %(db_user)s %(db_password)s" % env)
     sudo("rabbitmqctl add_vhost %(db_name)s" % env)
     sudo("rabbitmqctl set_permissions -p %(db_name)s %(db_user)s  \".*\" \".*\" \".*\"" % env)
-
+    
+def configure_celery():
+    pass
+    
 def setup_memcached():
     sudo("aptitude -y install memcached")
     put("memcached/memcached", "/etc/init.d/memcached", use_sudo=True)
