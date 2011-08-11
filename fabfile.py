@@ -313,7 +313,11 @@ def setup_supervisord():
 def configure_supervisor_gunicorn():
     files.upload_template("supervisor/gunicorn_supervisor.conf", "/etc/supervisor/conf.d/gunicorn_%(user)s.conf" % env, use_sudo=True, context=env)
     sudo("killall -HUP supervisord")
-
+    
+def configure_supervisor_celeryd():
+    files.upload_template("supervisor/celeryd_supervisor.conf", "/etc/supervisor/conf.d/celeryd_%(user)s.conf" % env, use_sudo=True, context=env)
+    sudo("killall -HUP supervisord")
+    
 def add_db(dbname, owner, template=''):
     """ Add database: add_db:dbname,owner,<template> """
     if template:
