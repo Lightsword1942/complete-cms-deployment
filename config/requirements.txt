@@ -19,6 +19,7 @@ django-tinymce
 django-haystack
 django-filer
 django-celery
+celery-haystack
 python-memcached
 cmsplugin-filer==0.8.0
 easy-thumbnails==1.0-alpha-13

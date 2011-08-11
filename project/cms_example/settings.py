@@ -120,7 +120,9 @@ INSTALLED_APPS = (
     'easy_thumbnails',
 
     'pagination',
-    'south'
+    'south',
+    
+    'celery_haystack'
 )
 
 gettext = lambda s: s
