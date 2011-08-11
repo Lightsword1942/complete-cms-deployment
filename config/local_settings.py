@@ -38,6 +38,10 @@ BROKER_USER = "%(db_user)s" # own settings later
 BROKER_PASSWORD = "%(db_password)s"
 BROKER_VHOST = "%(db_name)s"
 
+CELERYD_CONCURRENCY = 10
+CELERYD_LOG_FILE = "celeryd.log"
+#CELERYD_LOG_LEVEL = "INFO"
+
 CACHE_BACKEND = 'memcached://127.0.0.1:%(memcached_port)s/'
 CACHE_MIDDLEWARE_SECONDS = 60*5
 CACHE_MIDDLEWARE_KEY_PREFIX = '%(project_name)s.'
