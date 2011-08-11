@@ -123,7 +123,8 @@ def setup_all():
     setup_rabbitmq()
     setup_memcached()
     configure_supervisor_gunicorn()
-    
+    configure_supervisor_celeryd()
+
 def setup_instance():
     setup_webapp()
     update_dependencies()
@@ -137,7 +138,8 @@ def setup_instance():
     configure_rabbitmq()
     configure_memcached()
     configure_supervisor_gunicorn()
-
+    configure_supervisor_celeryd()
+    
 def setup_solr():
     """ Setup search server """
     with settings(warn_only=True):
@@ -289,9 +291,6 @@ def configure_rabbitmq():
     sudo("rabbitmqctl add_user %(db_user)s %(db_password)s" % env)
     sudo("rabbitmqctl add_vhost %(db_name)s" % env)
     sudo("rabbitmqctl set_permissions -p %(db_name)s %(db_user)s  \".*\" \".*\" \".*\"" % env)
-    
-def configure_celery():
-    pass
     
 def setup_memcached():
     sudo("aptitude -y install memcached")
