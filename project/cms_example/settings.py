@@ -122,7 +122,8 @@ INSTALLED_APPS = (
     'pagination',
     'south',
     
-    'celery_haystack'
+    'celery_haystack',
+    'djcelery'
 )
 
 gettext = lambda s: s
