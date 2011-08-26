@@ -42,17 +42,21 @@ def python(cmd):
     cmdstr = "PYTHONPATH=%(extra_paths)s DJANGO_SETTINGS_MODULE=settings /home/%(user)s/%(project_name)s/bin/python -c \"%%s\"" % env
     return cmdstr % cmd
     
+def collectstatic():
+    run(create_manage_command("collectstatic --noinput"))
+    
 def deploy_full(full_setup=False, first_run=False):
     """Full deploy: push, pip and reload."""
     push()
     update_dependencies()
-    run(create_manage_command("collectstatic --noinput"))
+    collectstatic()
     reload(full_setup=full_setup, first_run=first_run)
 
 def deploy_project():
     push()
-    run(create_manage_command("collectstatic --noinput"))
+    collectstatic()
     reload()
+
 
 def push_project():
     """ Push out new code to the server """
@@ -79,8 +83,6 @@ def push_wsgi():
 def push():
     push_project()
     push_django_settings()
-    if not hasattr(env, 'use_nginx'):
-        push_wsgi()
 
 def update_dependencies():    
     """ Update requirements remotely """
@@ -332,6 +334,9 @@ def configure_db():
     """ Set up webapps database """
     add_dbuser(env.db_user, env.db_password)
     add_db(env.db_name, env.db_user)
+    
+def drop_database():
+    sudo('dropdb %(db_name)s' % env)
 
 def syncdb():
     """ Run syncdb """
