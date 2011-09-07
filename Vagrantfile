@@ -2,7 +2,7 @@ Vagrant::Config.run do |config|
 
     config.vm.define :loadbal do |config|
       config.vm.box = "lucid32"
-      config.vm.network('33.33.33.1')
+      config.vm.network('33.33.33.2')
       config.vm.customize do |vm|
           vm.memory_size = 256
       end
